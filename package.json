@@ -1,0 +1,22 @@
+{
+  "name": "simple_tools",
+  "version": "1.0.0",
+  "description": "A collection of simple productivity tools",
+  "main": "calculator.js",
+  "dependencies": {
+    "browser-sync": "^2.18.6"
+  },
+  "scripts": {
+    "start": "browser-sync start --server --files '*.css, *.css, *.js'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Bculp/simple_tools.git"
+  },
+  "author": "Brandon Culp",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Bculp/simple_tools/issues"
+  },
+  "homepage": "https://github.com/Bculp/simple_tools#readme"
+}
