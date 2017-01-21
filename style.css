@@ -1,0 +1,18 @@
+.container {
+	display: block;
+	border: solid black 2px;
+	width: 70vw;
+	height: 70vh;
+	margin: auto;
+}
+
+#output {
+	display: block;
+	border: solid black 2px;
+	text-align: right;
+	padding-right: 1vw;
+}
+
+body {
+	/*background-color: red;*/
+}
