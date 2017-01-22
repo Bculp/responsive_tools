@@ -1,18 +1,36 @@
+body {}
+
 .container {
 	display: block;
 	border: solid black 2px;
-	width: 70vw;
-	height: 70vh;
+	width: 80vw;
+	height: 60vh;
 	margin: auto;
+	margin-top: 10vh;
+}
+
+.flex-container {
+	display: flex;
+	flex-wrap: wrap;
+	margin-top: 3vh;
 }
 
 #output {
-	display: block;
 	border: solid black 2px;
 	text-align: right;
 	padding-right: 1vw;
+	height: 8vh;
+	font-size: 7vh;
 }
 
-body {
-	/*background-color: red;*/
+#result {
+	font-size: 100%;
+}
+
+.item {
+	height: 8vh;
+	width: 18vw;
+	margin: auto;
+	margin-top: 1vh;
+	font-size: 200%;
 }
