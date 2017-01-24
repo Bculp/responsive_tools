@@ -7,6 +7,8 @@ body {}
 	height: 60vh;
 	margin: auto;
 	margin-top: 10vh;
+	background-color: #f2fdff;
+
 }
 
 .flex-container {
@@ -21,6 +23,7 @@ body {}
 	padding-right: 1vw;
 	height: 8vh;
 	font-size: 7vh;
+	background-color: white;
 }
 
 #result {
@@ -32,5 +35,10 @@ body {}
 	width: 18vw;
 	margin: auto;
 	margin-top: 1vh;
-	font-size: 200%;
+	/*font-size: 200%;*/
+	font-size: 4vh;
+	/*color: #3399ff;*/
+	background-color: #99ccff;
 }
+
+
