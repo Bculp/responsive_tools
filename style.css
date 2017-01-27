@@ -38,7 +38,12 @@ body {}
 	/*font-size: 200%;*/
 	font-size: 4vh;
 	/*color: #3399ff;*/
+	box-shadow: .5vw .5vh;
 	background-color: #99ccff;
+}
+
+.button-pressed {
+	box-shadow: 0 0;
 }
 
 
