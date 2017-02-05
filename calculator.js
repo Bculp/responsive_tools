@@ -1,12 +1,16 @@
 // mobile stopped working when changed event listeners so had to make output var instead of const
 var output = document.querySelector('#output');
 const buttons = document.querySelectorAll('.item');
+let buttonsArray = Array.from(buttons);
 let equation = '';
 let validNums = ['0','1','2','3','4','5','6','7','8','9','.'];
-let validOperators = ['(', ')', '%', '/','X','x','*','-','+','='];
+let validOperators = ['(', ')', '%', '/','X','x','*','-','+','=','÷','×'];
 let result = 0;
+let currentBtnPressed = '';
+
 
 function pressButton(...args) {
+	console.log(this.textContent)
 
 	this.classList ? this.classList.add('button-pressed') : '';
 
@@ -25,14 +29,24 @@ function pressButton(...args) {
 		output.textContent = equation;
 	} else {
 		equation += input;
+		// only show input in box - dont' allow it run outside the box
+		// check the length of input and if it's greater only show from the end of input to length inwards
+		// handle the case that input or output is longer than the allowed space in the text box
+		// round for output but stop adding for input
+
+
+		// not sure how to do!!
 		output.textContent = equation;
 	}
 }
 
 function compute(equation) {
-	// should shop off last element if it's an operator or decimal
-	// handle the case that input or output is longer than the allowed space in the text box
-	// round for output but stop adding for input
+	let invalidEndings = ['.', '%', '/', 'X', 'x','*', '-', '+'];
+	// chop off last element if it's an operator or decimal
+	if (invalidEndings.includes(equation[equation.length-1])) {
+		equation = equation.slice(0, -1);
+	}
+
 	// button pressing effect doesn't work on mobile. Class is added, but don't see effect.
 
 	// Replace all instances of x and ÷ with * and / respectively. This can be done easily using regex and the 'g' tag which will replace all instances of the matched character/substring
@@ -41,7 +55,7 @@ function compute(equation) {
 	return eval(equation);
 }
 
-buttons.forEach(button => {
+buttonsArray.forEach(button => {
 	button.addEventListener('mousedown', pressButton);
 	button.addEventListener('mouseup', function() {
 		if (this.classList.contains('button-pressed')) {
@@ -50,22 +64,26 @@ buttons.forEach(button => {
 	});
 })
 
+
 document.addEventListener('keydown', function(e) {
-	if (validNums.includes(e.key) || validOperators.includes(e.key) || e.key === 'Enter') {
-		console.log('e is: ', e.key)
-		console.log(buttons[4])
-		// buttons[4].classList.add('button-pressed');
-		// console.log('this is:', this)
-		pressButton(null, e.key)
+	let key = e.key.toString();
+	if (e.key === '/') key = '÷';
+	if (e.key === '*') key = '×';
+
+	if (validNums.includes(key) || validOperators.includes(key) || key === 'Enter') {
+
+		// search for DOM element then add class to it & set variable to it for easy removal
+		let DOMelement = buttonsArray.find(element => {
+			return element.textContent == keyValue || element.dataset.value == keyValue})
+
+		DOMelement.classList.add('button-pressed');
+		currentBtnPressed = DOMelement;
+
+		pressButton(null, key)
 	}
 })
 
 document.addEventListener('keyup', function() {
-	// if (this.classList.contains('button-pressed')) {
-	// 	this.classList.remove('button-pressed');
-	// }
-		// buttons[4].classList.remove('button-pressed');
-			console.log('key event')
-
-
+		currentBtnPressed.classList.remove('button-pressed');
+		currentBtnPressed = '';
 })
