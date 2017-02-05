@@ -1,5 +1,8 @@
-body {}
+body {
+	font-family: "Verdana", "Arial", sans-serif;
+}
 
+/* -- ENTIRE CALCULATOR -- */
 .container {
 	display: block;
 	border: solid black 2px;
@@ -7,16 +10,11 @@ body {}
 	height: 60vh;
 	margin: auto;
 	margin-top: 10vh;
-	background-color: #f2fdff;
+	background-color: #f2f4f8;
 
 }
 
-.flex-container {
-	display: flex;
-	flex-wrap: wrap;
-	margin-top: 3vh;
-}
-
+/* -- OUTPUT FROM PRESSING BUTTONS -- */
 #output {
 	border: solid black 2px;
 	text-align: right;
@@ -26,10 +24,14 @@ body {}
 	background-color: white;
 }
 
-#result {
-	font-size: 100%;
+/* -- AREA BELOW THE OUTPUT*/
+.flex-container {
+	display: flex;
+	flex-wrap: wrap;
+	margin-top: 3vh;
 }
 
+/* -- BUTTONS -- */
 .item {
 	height: 8vh;
 	width: 18vw;
@@ -37,12 +39,16 @@ body {}
 	margin-top: 1vh;
 	font-size: 4vh;
 	box-shadow: .2vw .2vh;
-	background-color: #99ccff;
+	background-color: #c7cbd1;
 	text-align: center;
 	line-height: 8vh;
+	border-radius: 5vh;
+	cursor: default;
+	/*prevent highlighting text w/ clicking*/
+	user-select: none;
 }
 
+/* -- BUTTON PRESSED EFFECT -- */
 .button-pressed {
 	box-shadow: none;
 }
-

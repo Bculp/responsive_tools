@@ -1,42 +1,54 @@
 // mobile stopped working when changed event listeners so had to make output var instead of const
 var output = document.querySelector('#output');
 const buttons = document.querySelectorAll('.item');
-let buttonsArray = Array.from(buttons);
-let equation = '';
-let validNums = ['0','1','2','3','4','5','6','7','8','9','.'];
-let validOperators = ['(', ')', '%', '/','X','x','*','-','+','=','÷','×', 'C', 'Enter'];
-let result = 0;
-let currentBtnPressed = '';
-
+const buttonsArray = Array.from(buttons);
+const validOperators = ['(', ')', '%', '/','X','x','*','-','+','=','÷','×', 'C', 'Enter', 'Backspace'];
+const validNums = ['0','1','2','3','4','5','6','7','8','9','.'];
+let equation = '', result = 0, currentBtnPressed = '', display = '';
+let callsToCheckDisplayLength = 0;
 
 function pressButton(...args) {
-	console.log(this.textContent)
-
 	this.classList ? this.classList.add('button-pressed') : '';
 
+	function checkDisplayLength(equation) {
+		display = equation;
+		if (display.length > 12) {
+			if (callsToCheckDisplayLength < 12) callsToCheckDisplayLength++;
+			return display.slice(callsToCheckDisplayLength);
+		}
+		return display;
+	}
+
+	function checkEnterDisplayLength(equation) {
+		display = equation;
+		while (display.length > 12) {
+			display = display.slice(1);
+		}
+		return display;
+	}
+
 	let input = args[1] || this.textContent;
-	console.log(input)
 	if (input === '=' || input === 'Enter') {
 		result = compute(equation)
-		output.textContent = result;
 		equation = result;
+		display = checkEnterDisplayLength(equation)
+		output.textContent = display;
 	} else if (input === 'C') {
 		equation = '';
 		output.textContent = '0';
+		callsToCheckDisplayLength = 0;
+	} else if (input === 'Backspace') {
+		equation = equation.slice(0,-1);
+		output.textContent = equation;
 	} else if (input === '%') {
 		let numAsPercent = Number(equation / 100);
 		equation = numAsPercent.toString();
-		output.textContent = equation;
+		display = checkDisplayLength(equation);
+		output.textContent = display;
 	} else {
 		equation += input;
-		// only show input in box - dont' allow it run outside the box
-		// check the length of input and if it's greater only show from the end of input to length inwards
-		// handle the case that input or output is longer than the allowed space in the text box
-		// round for output but stop adding for input
-
-
-		// not sure how to do!!
-		output.textContent = equation;
+		display = checkDisplayLength(equation)
+		output.textContent = display;
 	}
 }
 
@@ -46,8 +58,6 @@ function compute(equation) {
 	if (invalidEndings.includes(equation[equation.length-1])) {
 		equation = equation.slice(0, -1);
 	}
-
-	// button pressing effect doesn't work on mobile. Class is added, but don't see effect.
 
 	// Replace all instances of x and ÷ with * and / respectively. This can be done easily using regex and the 'g' tag which will replace all instances of the matched character/substring
 	equation = equation.replace(/\u00D7/g, '*').replace(/\u00F7/g, '/');
@@ -62,29 +72,28 @@ buttonsArray.forEach(button => {
 			this.classList.remove('button-pressed');
 		}
 	});
-})
-
+});
 
 document.addEventListener('keydown', function(e) {
 	let key = e.key.toString();
 	if (key === '/') key = '÷';
 	if (key === '*') key = '×';
-	if (key === 'Backspace') key = 'C';
 
 	if (validNums.includes(key) || validOperators.includes(key)) {
 
 		// search for DOM element then add class to it & set variable to it for easy removal
 		let DOMelement = buttonsArray.find(element => {
-			return element.textContent == key || element.dataset.value == key})
+			return element.textContent == key || element.dataset.value == key
+		})
 
 		DOMelement.classList.add('button-pressed');
 		currentBtnPressed = DOMelement;
-
-		pressButton(null, key)
+		pressButton(null, key);
 	}
-})
+});
 
 document.addEventListener('keyup', function() {
-		currentBtnPressed.classList.remove('button-pressed');
-		currentBtnPressed = '';
-})
+	if (!currentBtnPressed) return;
+	currentBtnPressed.classList.remove('button-pressed');
+	currentBtnPressed = '';
+});
