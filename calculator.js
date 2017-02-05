@@ -4,7 +4,7 @@ const buttons = document.querySelectorAll('.item');
 let buttonsArray = Array.from(buttons);
 let equation = '';
 let validNums = ['0','1','2','3','4','5','6','7','8','9','.'];
-let validOperators = ['(', ')', '%', '/','X','x','*','-','+','=','÷','×'];
+let validOperators = ['(', ')', '%', '/','X','x','*','-','+','=','÷','×', 'C', 'Enter'];
 let result = 0;
 let currentBtnPressed = '';
 
@@ -67,14 +67,15 @@ buttonsArray.forEach(button => {
 
 document.addEventListener('keydown', function(e) {
 	let key = e.key.toString();
-	if (e.key === '/') key = '÷';
-	if (e.key === '*') key = '×';
+	if (key === '/') key = '÷';
+	if (key === '*') key = '×';
+	if (key === 'Backspace') key = 'C';
 
-	if (validNums.includes(key) || validOperators.includes(key) || key === 'Enter') {
+	if (validNums.includes(key) || validOperators.includes(key)) {
 
 		// search for DOM element then add class to it & set variable to it for easy removal
 		let DOMelement = buttonsArray.find(element => {
-			return element.textContent == keyValue || element.dataset.value == keyValue})
+			return element.textContent == key || element.dataset.value == key})
 
 		DOMelement.classList.add('button-pressed');
 		currentBtnPressed = DOMelement;
