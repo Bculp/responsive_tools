@@ -1,0 +1,33 @@
+body {}
+
+.flex-container-row {
+	display: flex;
+	align-items: center;
+
+}
+
+.row-item {
+	font-size: 4vh;
+	flex-grow: 1;
+	border: .5vh solid black;
+	margin-left:1vw;
+}
+
+.flex-container-column {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.column-item {
+	font-size: 11vh;
+}
+
+#timer-text {
+	/*margin-top: 10vh;*/
+	/*margin:auto;*/
+}
+
+#return-text {
+	margin-top: 5vh;
+}
