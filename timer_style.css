@@ -35,13 +35,13 @@ body {}
 	margin-top: 7.4vh;
 	width: 35vw;
 	height: 25vh;
-	font-size: 900%;
+	font-size: 14vw;
 	text-align: center;
 }
 
 #return-text {
 	margin-top: 5vh;
-	font-size: 400%;
+	font-size: 5vw;
 	width: 35vw;
 	height: 15vh;
 	text-align: center;
@@ -52,5 +52,6 @@ body {}
 	width: 6vw;
 	margin-top: 7.4vh;
 	background-color: #6666ff;
+	margin-bottom: 7vh;
 }
 
