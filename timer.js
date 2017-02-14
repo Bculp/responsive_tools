@@ -129,3 +129,5 @@ startBtn.addEventListener('click', () => {
 
 resetBtn.addEventListener('click', resetTimer);
 
+// arrows don't work if time is counting down. they decrease/inc time but then
+//  it goes back to whatever it was before clicking them
