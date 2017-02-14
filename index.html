@@ -7,17 +7,38 @@
 
 	<body>
 		<div class="flex-container-row static-times">
-			<div class="row-item">30 sec</div>
-			<div class="row-item">60 sec</div>
+			<div class="row-item">1 min</div>
+			<div class="row-item">5 min</div>
 			<div class="row-item">15 min</div>
 			<div class="row-item">Enter time</div>
 		</div>
 		<div class="flex-container-row">
 			<div class="flex-container-column container-item">
-				<div class="column-item" id="timer-text">00:00</div>
-				<div class="column-item" id="return-text">Return at 00:00</div>
+				<div class="flex-container-row">
+					<div class="container-item" id="progress-bar">
+						<div id="progress"></div>
+					</div>
+
+					<div class="flex-container-row column-item" id="timer-text">
+						<div class="input-time" id="minutes" contenteditable="true"></div>
+						<div class="input-time" id="colon">:</div>
+						<div class="input-time" id="seconds" contenteditable="true"></div>
+					</div>
+
+					<div class="flex-container-inside-column">
+						<div class="column-item" data-arrow="increment">△</div>
+						<div class="column-item" data-arrow="decrement">△</div>
+					</div>
+				</div>
+
+				<div class="flex-container-row buttons">
+					<div class="button">Start</div>
+					<div class="button">Reset</div>
+				</div>
+				<!-- Return at 00:00 -->
+				<div class="column-item" id="return-text"></div>
 			</div>
-			<div class="container-item" id="progress-bar"></div>
+			<!-- previous progress bar spot -->
 		</div>
 		<script type="text/javascript" src="timer.js"></script>
 	</body>

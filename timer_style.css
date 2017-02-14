@@ -2,8 +2,6 @@ body {}
 
 .flex-container-row {
 	display: flex;
-	/*align-items: center;*/
-	/*justify-content: center;*/
 }
 
 .flex-container-row.static-times {
@@ -26,15 +24,35 @@ body {}
 	width: 80vw;
 }
 
-.column-item {
-	/*font-size: 11vh;*/
+
+.flex-container-inside-column {
+	display: flex;
+	flex-direction: column;
+	margin-top: 6.9vh;
+
+}
+ /* INCREMENT AND DECREMENT ARROWS */
+.flex-container-inside-column div {
+	font-size: 10vh;
+	border: .2vw solid black;
+	/*height: calc(.5vh * var(--timer-box-height));*/
+	height: 12.2vh;
+	margin-left: 1vh;
+	margin-top: .5vh;
+	/* vertically align the arrows in their boxes*/
+	line-height: 12.2vh
+}
+
+.flex-container-inside-column div + div {
+	transform: rotate(-180deg);
 }
 
 #timer-text {
+	--timer-box-height: 25vh;
 	border: .4vw solid black;
 	margin-top: 7.4vh;
 	width: 35vw;
-	height: 25vh;
+	height: var(--timer-box-height);
 	font-size: 14vw;
 	text-align: center;
 }
@@ -45,13 +63,96 @@ body {}
 	width: 35vw;
 	height: 15vh;
 	text-align: center;
+	/*margin-left: -2vh;*/
 }
 
 #progress-bar {
 	border: 2px solid black;
+	background-color: #6666ff;
 	width: 6vw;
 	margin-top: 7.4vh;
-	background-color: #6666ff;
 	margin-bottom: 7vh;
+	margin-right: 2vh;
+	height: 25vh;
+	/*height is either 25vh so same as clock or sized for whole div*/
+}
+
+#progress {
+	width: 6vw;
+	background-color: white;
+	margin-bottom: 7vh;
+	height: 100%;
+}
+
+.input-time {
+	display: inline-block;
+	border: none;
+	width: 45%;
+	max-width: 2ch;
+	flex-grow: 1;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+#input-colon {
+	width: 5%;
+}
+
+.input-time-span {
+	width: 100%;
+	height: 100%;
+}
+
+#minutes {
+	width: 45%;
+}
+
+#colon {
+	width: 5%;
+}
+
+#seconds {
+	width: 45%;
+}
+
+.input-time:focus {
+	outline: none;
+}
+
+.buttons {
+	margin-left: -2vw;
+	margin-top: .5vw;
+}
+
+.button {
+	flex-grow: 1;
+	width: 12vw;
+	height: 6vh;
+	border: 2px solid black;
+	margin-left: 2vw;
+	font-size: 3vw;
+	text-align: center;
+	line-height: 6vh;
+	border-radius: 1vh;
+}
+
+/* ---START BUTTON--*/
+.button:nth-of-type(1) {
+	background-color: #33cc33;
+}
+
+.button:nth-of-type(1):hover {
+	background-color: #5cd65c;
+	/*effect when clicked - fade lighter color over btn*/
+}
+
+/* ---RESET BUTTON--*/
+.button:nth-of-type(2) {
+	background-color: #ff5050;
+}
+
+.button:nth-of-type(2):hover {
+	background-color: #ff8080;
+	/*effect when clicked - fade lighter color over btn*/
 }
 
