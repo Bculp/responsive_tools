@@ -19,18 +19,16 @@ body {}
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	/*margin-top: 20vh;*/
 	margin-left: 7vw;
 	width: 80vw;
 }
-
 
 .flex-container-inside-column {
 	display: flex;
 	flex-direction: column;
 	margin-top: 6.9vh;
-
 }
+
  /* INCREMENT AND DECREMENT ARROWS */
 .flex-container-inside-column div {
 	font-size: 10vh;
@@ -48,12 +46,12 @@ body {}
 }
 
 #timer-text {
-	--timer-box-height: 25vh;
+	--timer-box-height: 40vh;
 	border: .4vw solid black;
 	margin-top: 7.4vh;
-	width: 35vw;
+	width: 50vw;
 	height: var(--timer-box-height);
-	font-size: 14vw;
+	font-size: 20vw;
 	text-align: center;
 }
 
