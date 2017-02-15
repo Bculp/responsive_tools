@@ -2,28 +2,13 @@ const timerText = document.querySelector('#timer-text');
 const returnText = document.querySelector('#return-text');
 const arrows = document.querySelectorAll('[data-arrow]');
 const progressBar = document.querySelector('#progress');
-let myInterval, beginTime, endTime, secondsLeft, totalSeconds, firstCall = true, running = false, paused = false;
-
 const minutesElement = document.querySelector('#minutes');
 const secondsElement = document.querySelector('#seconds');
 const startResetBtns = document.querySelectorAll('.button');
 const startBtn = startResetBtns[0];
 const resetBtn = startResetBtns[1];
-
-function getTime() {
-	let time = `${minutesElement.textContent}:${secondsElement.textContent}`;
-	return time;
-}
-
-// buttons at top or side for set times and then a place to enter a time
-// or just click on the timer to set time
-/* 
-
-***** SHMOOP WANTS THE CLOCK BIGGER AND TO GET RID OF THE FANCY INC/DEC BTNS
-SINCE SHE CAN TYPE IN THE TIME
-ALSO WANTS THE PROGRESS BAR TO BE BIGGER
-
-*/
+const presetTimes = document.querySelectorAll('.preset-time');
+let myInterval, beginTime, endTime, secondsLeft, totalSeconds, firstCall = true, running = false, paused = false;
 
 function runTimer(seconds) {
 	clearInterval(myInterval);
@@ -32,7 +17,6 @@ function runTimer(seconds) {
 	displayTimeLeft(seconds);
 	displayReturnTime(endTime);
 	displayProgressBar(seconds);
-
 	myInterval = setInterval(() => {
 		secondsLeft = Math.round((endTime - Date.now()) / 1000);
 		if (secondsLeft < 1) {
@@ -40,7 +24,6 @@ function runTimer(seconds) {
 		}
 		displayTimeLeft(secondsLeft);
 	}, 1000);
-
 }
 
 function displayTimeLeft(seconds) {
@@ -50,13 +33,8 @@ function displayTimeLeft(seconds) {
 	let textSeconds = `${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`;
 	minutesElement.innerHTML = minutes;
 	secondsElement.innerHTML = textSeconds;
-	// timerText.innerHTML = `${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`;
-	// document.title = timerText.innerHTML;
 	document.title = `${minutes}:${textSeconds}`;
-
-	// ** ---- THIS WILL NEED MINUTES REMAINING AS WELL AS SECONDS!! ---- **** //
 	displayProgressBar(totalTimeRemainingInSeconds);
-	// remaining seconds as percentage of original seconds
 }
 
 function displayReturnTime(timestamp) {
@@ -76,7 +54,6 @@ function displayProgressBar(seconds) {
 }
 
 function changeTime() {
-	// let currentTime = timerText.innerHTML.split(':');
 	let minutes = Number(minutesElement.innerHTML);
 	let seconds = Number(secondsElement.innerHTML);
 	if (this.dataset.arrow === 'increment') {
@@ -86,6 +63,7 @@ function changeTime() {
 			seconds = 0;
 		}
 		let newSecondTotal = minutes * 60 + seconds;
+		if (running) pauseToChangeTime();
 		displayTimeLeft(newSecondTotal)
 	}
 	if (this.dataset.arrow === 'decrement') {
@@ -96,6 +74,7 @@ function changeTime() {
 			seconds = 59;
 		}
 		let newSecondTotal = minutes * 60 + seconds;
+		if (running) pauseToChangeTime();
 		displayTimeLeft(newSecondTotal);
 	}
 }
@@ -108,26 +87,35 @@ function resetTimer() {
 	paused = false;
 }
 
+function addTime() {
+	let timeInSeconds = Number(this.textContent) * 60;
+	if (running) pauseToChangeTime();
+	displayTimeLeft(timeInSeconds);
+}
+
+function pauseToChangeTime() {
+	running = false;
+	startBtn.textContent = 'Start';
+	clearInterval(myInterval);
+}
+
 arrows.forEach(arrow => arrow.addEventListener('click', changeTime));
 
 startBtn.addEventListener('click', () => {
 	let seconds = Number(minutesElement.textContent) * 60 + Number(secondsElement.textContent);
 	if (!seconds) return alert('Error! Please enter a valid time!')
 	if (running) {
-		running = false;
+		pauseToChangeTime();
 		paused = true;
-		startBtn.textContent = 'Start';
 		return clearInterval(myInterval);
-	} else {
-		running = true;
-		startBtn.textContent = 'Pause';
-		if (!paused) firstCall = true;
-		paused = false;
 	}
+	running = true;
+	startBtn.textContent = 'Pause';
+	if (!paused) firstCall = true;
+	paused = false;
 	runTimer(seconds);
 })
 
 resetBtn.addEventListener('click', resetTimer);
 
-// arrows don't work if time is counting down. they decrease/inc time but then
-//  it goes back to whatever it was before clicking them
+presetTimes.forEach(selector => selector.addEventListener('click', addTime));

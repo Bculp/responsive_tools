@@ -8,16 +8,33 @@ body {
 	display: flex;
 }
 
-.flex-container-row.static-times {
-	text-align: center;
+/* ** ==== ADD THESE TO OTHER FLEX CONTAINERS FOR DIFFERENT BROWSERS ==== **8*/
+.navbar {
+	 display: -webkit-flex;
+   display: flex;
+   -webkit-flex-direction: row;
+   flex-direction: row;
+   -webkit-justify-content: flex-end;
+   justify-content: flex-end;
 }
 
-.row-item {
+.preset-time {
 	font-size: 4vh;
-	flex-grow: 1;
-	border: .5vh solid black;
-	margin-left:1vw;
+	border-left: .1vh solid black;
+	margin-left: 1vw;
+	padding-left: 1vw;
+	user-select: none;
 }
+
+.preset-time:hover {
+	cursor: default;
+}
+
+.preset-time {
+	/*float: right;*/
+	/*margin-left: auto;*/
+}
+
 
 .flex-container-column {
 	display: flex;
