@@ -30,12 +30,6 @@ body {
 	cursor: default;
 }
 
-.preset-time {
-	/*float: right;*/
-	/*margin-left: auto;*/
-}
-
-
 .flex-container-column {
 	display: flex;
 	flex-direction: column;
@@ -141,7 +135,8 @@ body {
 }
 
 .buttons {
-	margin-left: -2.2vw;
+	margin: auto;
+	width: 25vw;
 }
 
 .button {
@@ -149,7 +144,6 @@ body {
 	width: 12vw;
 	height: 6vh;
 	border: .2vw solid black;
-	margin-left: 3.5vw;
 	font-size: 3vw;
 	text-align: center;
 	line-height: 6vh;
@@ -171,6 +165,7 @@ body {
 /* ---RESET BUTTON--*/
 .button:nth-of-type(2) {
 	background-color: #ff5050;
+	margin-left: 3.5vw;
 }
 
 .button:nth-of-type(2):hover {

@@ -90,6 +90,7 @@ function resetTimer() {
 function addTime() {
 	let timeInSeconds = Number(this.textContent) * 60;
 	if (running) pauseToChangeTime();
+	totalSeconds = timeInSeconds;
 	displayTimeLeft(timeInSeconds);
 }
 
