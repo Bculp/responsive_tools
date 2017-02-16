@@ -1,5 +1,4 @@
 body {
-	/*background-color: #ffe6cc;*/
 	background-image: url('sky2.jpg');
 	font-family: "Times New Roman", Times, serif;
 }
@@ -38,7 +37,7 @@ body {
 	width: 80vw;
 }
 
-.flex-container-inside-column {
+.flex-container-arrows {
 	display: flex;
 	flex-direction: column;
 	margin-top: 7.4vh;
@@ -46,7 +45,7 @@ body {
 }
 
  /* INCREMENT AND DECREMENT ARROWS */
-.flex-container-inside-column div {
+.flex-container-arrows div {
 	font-size: 10vh;
 	border: .2vw solid black;
 	border-radius: 2vh;
@@ -57,14 +56,13 @@ body {
 	line-height: 12vh;
 }
 
-.flex-container-inside-column div:hover {
+.flex-container-arrows div:hover {
 	background-color: #fdf9f3;
 	cursor: default;
 	user-select: none;
-
 }
 
-.flex-container-inside-column div + div {
+.flex-container-arrows div + div {
 	transform: rotate(-180deg);
 	margin-top: 15vh;
 }
@@ -90,26 +88,23 @@ body {
 
 #progress-bar {
 	border: .2vw solid black;
-	/*background-color: #6666ff old purple bluish;*/
 	background-color: #8EE5EE;
 	width: 6vw;
+	height: 40.8vh;
 	margin-top: 7.4vh;
 	margin-bottom: 7vh;
 	margin-right: 2vh;
-	height: 40.8vh;
 }
 
 #progress {
 	width: 6vw;
+	height: 100%;
 	background-color: #fdf9f3;
 	margin-bottom: 7vh;
-	height: 100%;
 }
 
 .input-time {
-	display: inline-block;
 	border: none;
-	width: 45%;
 	max-width: 2ch;
 	flex-grow: 1;
 	white-space: nowrap;

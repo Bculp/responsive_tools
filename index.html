@@ -12,19 +12,19 @@
 			<div class="preset-time">15</div>
 		</div>
 		<div class="flex-container-row">
-			<div class="flex-container-column container-item">
+			<div class="flex-container-column">
 				<div class="flex-container-row">
-					<div class="container-item" id="progress-bar">
+					<div id="progress-bar">
 						<div id="progress"></div>
 					</div>
 
-					<div class="flex-container-row column-item" id="timer-text">
+					<div class="flex-container-row" id="timer-text">
 						<div class="input-time" id="minutes" contenteditable="true"></div>
 						<div class="input-time" id="colon">:</div>
 						<div class="input-time" id="seconds" contenteditable="true"></div>
 					</div>
 
-					<div class="flex-container-inside-column">
+					<div class="flex-container-arrows">
 						<div class="arrow" data-arrow="increment">△</div>
 						<div class="arrow" data-arrow="decrement">△</div>
 					</div>
@@ -33,12 +33,11 @@
 				<div class="flex-container-row buttons">
 					<div class="button">Start</div>
 					<div class="button">Reset</div>
-
 				</div>
-				<div class="column-item" id="return-text"></div>
+				<div id="return-text"></div>
 			</div>
 		</div>
+		<audio></audio>
 		<script type="text/javascript" src="timer.js"></script>
 	</body>
-
 </html>

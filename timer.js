@@ -120,3 +120,6 @@ startBtn.addEventListener('click', () => {
 resetBtn.addEventListener('click', resetTimer);
 
 presetTimes.forEach(selector => selector.addEventListener('click', addTime));
+
+const audio = document.querySelector('audio');
+console.dir(audio);
