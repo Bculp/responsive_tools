@@ -8,7 +8,11 @@ const startResetBtns = document.querySelectorAll('.button');
 const startBtn = startResetBtns[0];
 const resetBtn = startResetBtns[1];
 const presetTimes = document.querySelectorAll('.preset-time');
-let myInterval, beginTime, endTime, secondsLeft, totalSeconds, firstCall = true, running = false, paused = false;
+const audio = document.querySelector('audio');
+let myInterval, beginTime, endTime, secondsLeft, totalSeconds, 
+firstCall = true, running = false, paused = false, endTimeInterval;
+
+audio.playbackRate = 1.2;
 
 function runTimer(seconds) {
 	clearInterval(myInterval);
@@ -21,6 +25,11 @@ function runTimer(seconds) {
 		secondsLeft = Math.round((endTime - Date.now()) / 1000);
 		if (secondsLeft < 1) {
 			clearInterval(myInterval);
+			displayTimeLeft(0);
+			createInterval();
+			endTimeInterval = setInterval(createInterval, 2000);
+			returnText.textContent = "Time's Up!";
+			returnText.classList.add('pop-up');
 		}
 		displayTimeLeft(secondsLeft);
 	}, 1000);
@@ -85,6 +94,9 @@ function resetTimer() {
 	returnText.innerHTML = '';
 	startBtn.textContent = 'Start';
 	paused = false;
+	returnText.classList.remove('pop-up');
+	returnText.textContent = '';
+	clearInterval(endTimeInterval);
 }
 
 function addTime() {
@@ -121,5 +133,7 @@ resetBtn.addEventListener('click', resetTimer);
 
 presetTimes.forEach(selector => selector.addEventListener('click', addTime));
 
-const audio = document.querySelector('audio');
-console.dir(audio);
+function createInterval() {
+	let audioInterval = setInterval(() => audio.play(), 80);
+	setTimeout(() => clearInterval(audioInterval), 600);
+}

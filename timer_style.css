@@ -86,6 +86,41 @@ body {
 	text-align: center;
 }
 
+@keyframes stretch {
+	0% {
+		transform: scale(.3);
+    background-color: #cce6ff;
+    border-radius: 100%;
+    opacity: .2;
+	}
+	50% {
+		/*background-color: orange;*/
+		/*opacity: .5;*/
+	}
+	100% {
+		transform: scale(1.5);
+    background-color: #ff5050;
+    opacity: .9;
+	}
+}
+
+.pop-up {
+  height: 50vh;
+  width: 50vw;
+  margin: 0 auto;
+  line-height: 15vh;
+  animation-name: stretch;
+  animation-duration: 3s; 
+  animation-timing-function: ease-out; 
+  animation-delay: 0;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
+  animation-fill-mode: none;
+  animation-play-state: running;
+}
+
+
+
 #progress-bar {
 	border: .2vw solid black;
 	background-color: #8EE5EE;
@@ -169,4 +204,5 @@ body {
 	user-select: none;
 	/*effect when clicked - fade lighter color over btn*/
 }
+
 
