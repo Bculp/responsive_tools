@@ -42,7 +42,6 @@ body {
 	margin: auto;
 	margin-top: 10vh;
 	background-color: #f2f4f8;
-
 }
 
 /* -- OUTPUT FROM PRESSING BUTTONS -- */
@@ -58,6 +57,8 @@ body {
 /* -- AREA BELOW THE OUTPUT*/
 .flex-container {
 	display: flex;
+	display: -webkit-flex;
+  -webkit-flex-direction: row;
 	flex-wrap: wrap;
 	margin-top: 3vh;
 }
