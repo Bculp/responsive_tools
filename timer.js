@@ -9,22 +9,22 @@ const startBtn = startResetBtns[0];
 const resetBtn = startResetBtns[1];
 const presetTimes = document.querySelectorAll('.preset-time');
 const audio = document.querySelector('audio');
-let myInterval, beginTime, endTime, secondsLeft, totalSeconds, 
+let mainInterval, beginTime, endTime, secondsLeft, totalSeconds, 
 firstCall = true, running = false, paused = false, endTimeInterval;
 
 audio.playbackRate = 1.2;
 
 function runTimer(seconds) {
-	clearInterval(myInterval);
+	clearInterval(mainInterval);
 	beginTime = Date.now();
 	endTime = beginTime + seconds * 1000;
 	displayTimeLeft(seconds);
 	displayReturnTime(endTime);
 	displayProgressBar(seconds);
-	myInterval = setInterval(() => {
+	mainInterval = setInterval(() => {
 		secondsLeft = Math.round((endTime - Date.now()) / 1000);
 		if (secondsLeft < 1) {
-			clearInterval(myInterval);
+			clearInterval(mainInterval);
 			displayTimeLeft(0);
 			createInterval();
 			endTimeInterval = setInterval(createInterval, 2000);
@@ -89,9 +89,8 @@ function changeTime() {
 }
 
 function resetTimer() {
-	clearInterval(myInterval);
+	clearInterval(mainInterval);
 	displayTimeLeft(0);
-	returnText.innerHTML = '';
 	startBtn.textContent = 'Start';
 	paused = false;
 	returnText.classList.remove('pop-up');
@@ -109,18 +108,21 @@ function addTime() {
 function pauseToChangeTime() {
 	running = false;
 	startBtn.textContent = 'Start';
-	clearInterval(myInterval);
+	clearInterval(mainInterval);
 }
 
-arrows.forEach(arrow => arrow.addEventListener('click', changeTime));
+function createInterval() {
+	let audioInterval = setInterval(() => audio.play(), 80);
+	setTimeout(() => clearInterval(audioInterval), 600);
+}
 
 startBtn.addEventListener('click', () => {
 	let seconds = Number(minutesElement.textContent) * 60 + Number(secondsElement.textContent);
-	if (!seconds) return alert('Error! Please enter a valid time!')
+	if (!seconds) return alert('Please enter a valid time!')
 	if (running) {
 		pauseToChangeTime();
 		paused = true;
-		return clearInterval(myInterval);
+		return clearInterval(mainInterval);
 	}
 	running = true;
 	startBtn.textContent = 'Pause';
@@ -130,10 +132,6 @@ startBtn.addEventListener('click', () => {
 })
 
 resetBtn.addEventListener('click', resetTimer);
-
 presetTimes.forEach(selector => selector.addEventListener('click', addTime));
+arrows.forEach(arrow => arrow.addEventListener('click', changeTime));
 
-function createInterval() {
-	let audioInterval = setInterval(() => audio.play(), 80);
-	setTimeout(() => clearInterval(audioInterval), 600);
-}

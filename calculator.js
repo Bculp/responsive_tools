@@ -4,10 +4,11 @@ const buttons = document.querySelectorAll('.item');
 const buttonsArray = Array.from(buttons);
 const validOperators = ['(', ')', '%', '/','X','x','*','-','+','=','÷','×', 'C', 'Enter', 'Backspace'];
 const validNums = ['0','1','2','3','4','5','6','7','8','9','.'];
-let equation = '', result = 0, currentBtnPressed = '', display = '';
-let callsToCheckDisplayLength = 0;
+const invalidEndings = ['.', '%', '/', 'X', 'x','*', '-', '+'];
+let equation = '', result = 0, currentBtnPressed = '', display = '', callsToCheckDisplayLength = 0;
 
 function pressButton(...args) {
+	let input = args[1] || this.textContent;
 	this.classList ? this.classList.add('button-pressed') : '';
 
 	function checkDisplayLength(equation) {
@@ -21,13 +22,13 @@ function pressButton(...args) {
 
 	function checkEnterDisplayLength(equation) {
 		display = equation;
+
 		while (display.length > 12) {
 			display = display.slice(1);
 		}
 		return display;
 	}
 
-	let input = args[1] || this.textContent;
 	if (input === '=' || input === 'Enter') {
 		result = compute(equation)
 		equation = result;
@@ -53,13 +54,11 @@ function pressButton(...args) {
 }
 
 function compute(equation) {
-	let invalidEndings = ['.', '%', '/', 'X', 'x','*', '-', '+'];
 	// chop off last element if it's an operator or decimal
 	if (invalidEndings.includes(equation[equation.length-1])) {
 		equation = equation.slice(0, -1);
 	}
-
-	// Replace all instances of x and ÷ with * and / respectively. This can be done easily using regex and the 'g' tag which will replace all instances of the matched character/substring
+	// Replace all instances of x and ÷ with * and /
 	equation = equation.replace(/\u00D7/g, '*').replace(/\u00F7/g, '/');
 	result = 0;
 	return eval(equation);
@@ -78,7 +77,6 @@ document.addEventListener('keydown', function(e) {
 	let key = e.key.toString();
 	if (key === '/') key = '÷';
 	if (key === '*') key = '×';
-
 	if (validNums.includes(key) || validOperators.includes(key)) {
 
 		// search for DOM element then add class to it & set variable to it for easy removal
