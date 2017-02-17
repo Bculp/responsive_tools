@@ -7,14 +7,10 @@ body {
 	display: flex;
 }
 
-/* ** ==== ADD THESE TO OTHER FLEX CONTAINERS FOR DIFFERENT BROWSERS ==== **8*/
 .navbar {
-	 display: -webkit-flex;
-   display: flex;
-   -webkit-flex-direction: row;
-   flex-direction: row;
-   -webkit-justify-content: flex-end;
-   justify-content: flex-end;
+   display: inline;
+   list-style-type: none;
+   overflow: hidden;
 }
 
 .preset-time {
@@ -23,10 +19,32 @@ body {
 	margin-left: 1vw;
 	padding-left: 1vw;
 	user-select: none;
+	float: right;
 }
 
 .preset-time:hover {
 	cursor: default;
+}
+
+.icons {
+	float: left;
+}
+
+#timer-icon {
+	height: auto;
+	width: auto;
+	max-width: 4vw;
+	max-height: 4vh;
+	user-select: none;
+}
+
+#calc-icon {
+	height: auto;
+	width: auto;
+	max-width: 4vw;
+	max-height: 4vh;
+	margin-left: .5vw;
+	user-select: none;
 }
 
 .flex-container-column {
