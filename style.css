@@ -29,6 +29,8 @@ body {
 	max-height: 4vh;
 	margin-left: .5vw;
 	user-select: none;
+	border-bottom: .2vw solid black;
+	padding-bottom: .2vw;
 }
 
 /* -- ENTIRE CALCULATOR -- */

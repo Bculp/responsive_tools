@@ -36,6 +36,8 @@ body {
 	max-width: 4vw;
 	max-height: 4vh;
 	user-select: none;
+	border-bottom: .2vw solid black;
+	padding-bottom: .2vw;
 }
 
 #calc-icon {
