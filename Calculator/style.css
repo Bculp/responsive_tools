@@ -1,5 +1,6 @@
 body {
 	font-family: "Verdana", "Arial", sans-serif;
+	background-image: url('light-wood.jpg');
 }
 
 /* -- NAVBAR -- */
@@ -37,11 +38,12 @@ body {
 .container {
 	display: block;
 	border: solid black 2px;
+	border-radius: 1vh;
 	width: 80vw;
 	height: 60vh;
 	margin: auto;
 	margin-top: 10vh;
-	background-color: #f2f4f8;
+	background-color: #4b4e4d;
 }
 
 /* -- OUTPUT FROM PRESSING BUTTONS -- */
@@ -52,6 +54,9 @@ body {
 	height: 8vh;
 	font-size: 7vh;
 	background-color: white;
+	margin-left: 2vh;
+	margin-right: 2vh;
+	margin-top: 2vh;
 }
 
 /* -- AREA BELOW THE OUTPUT*/
@@ -71,7 +76,7 @@ body {
 	margin-top: 1vh;
 	font-size: 4vh;
 	box-shadow: .2vw .2vh;
-	background-color: #c7cbd1;
+	background-color: #f2f3f2;
 	text-align: center;
 	line-height: 8vh;
 	border-radius: 5vh;
@@ -82,5 +87,5 @@ body {
 
 /* -- BUTTON PRESSED EFFECT -- */
 .button-pressed {
-	box-shadow: none;
+	background-color: #7d8281
 }
