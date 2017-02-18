@@ -1,6 +1,7 @@
 body {
-	background-image: url('background.jpg');
 	font-family: "Times New Roman", Times, serif;
+	background-image: url('background.jpg');
+	background-size: 100vw 100vh;
 }
 
 /* -- NAVBAR -- */

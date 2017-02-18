@@ -1,6 +1,7 @@
 body {
 	font-family: "Verdana", "Arial", sans-serif;
 	background-image: url('light-wood.jpg');
+	background-size: 150vw 100vh;
 }
 
 /* -- NAVBAR -- */
