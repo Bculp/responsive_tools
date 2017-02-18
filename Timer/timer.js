@@ -10,9 +10,21 @@ const resetBtn = startResetBtns[1];
 const presetTimes = document.querySelectorAll('.preset-time');
 const audio = document.querySelector('audio');
 let mainInterval, beginTime, endTime, secondsLeft, totalSeconds, 
-firstCall = true, running = false, paused = false, endTimeInterval;
+firstCall = true, running = false, paused = false, endTimeInterval, playbackTime, cancelTime;
 
 audio.playbackRate = 1.2;
+playbackTime = 80;
+cancelTime = 600;
+// detect browser and set audio specifics so Safari works properly
+let sUsrAg = navigator.userAgent;
+
+if(sUsrAg.indexOf("Chrome") > -1 || sUsrAg.indexOf("Firefox") > -1 || sUsrAg.indexOf("MSIE") > -1 || sUsrAg.indexOf("Opera") > -1) {		
+} else if (sUsrAg.indexOf("Safari") > -1) {
+    audio.playbackRate = 1;
+    playbackTime = 1;
+    audio.playbackRate = 1;
+    cancelTime = 1200;
+}
 
 function runTimer(seconds) {
 	clearInterval(mainInterval);
@@ -112,8 +124,8 @@ function pauseToChangeTime() {
 }
 
 function createInterval() {
-	let audioInterval = setInterval(() => audio.play(), 80);
-	setTimeout(() => clearInterval(audioInterval), 600);
+	let audioInterval = setInterval(() => audio.play(), playbackTime);
+	setTimeout(() => clearInterval(audioInterval), cancelTime);
 }
 
 startBtn.addEventListener('click', () => {
