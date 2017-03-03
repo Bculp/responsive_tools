@@ -237,3 +237,9 @@ body {
 	background-color: #fdf9f3;
 	margin-bottom: 7vh;
 }
+
+/* -- DEVELOPER TAG AT BOTTOM OF PAGE*/
+#developer-tag {
+	position: fixed;
+	bottom: 0;
+}

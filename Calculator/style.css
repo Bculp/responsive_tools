@@ -90,3 +90,9 @@ body {
 .button-pressed {
 	background-color: #7d8281
 }
+
+/* -- DEVELOPER TAG AT BOTTOM OF PAGE*/
+#developer-tag {
+	position: fixed;
+	bottom: 0;
+}
