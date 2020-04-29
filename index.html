@@ -2,8 +2,10 @@
 <html>
 	<head>
 		<title>Timer</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <meta charset="utf-8"/>
 		<link rel="stylesheet" href="Timer/style.css">
-		<link rel="icon" href="Icons/timer-icon.png" type="image/png">
+    <link rel="icon" href="Icons/timer-icon.png" type="image/png">
 	</head>
 
 	<body>
@@ -31,9 +33,16 @@
 					</div>
 
 					<div class="flex-container-row" id="timer-text">
-						<div class="input-time" id="minutes" contenteditable="true"></div>
-						<div class="input-time" id="colon">:</div>
-						<div class="input-time" id="seconds" contenteditable="true"></div>
+            <div class="flex-center input-time">
+              <div class="input-time" id="minutes" contenteditable="true">
+              </div>
+            </div>
+            <div class="flex-center input-time">
+              <div class="input-time" id="colon">:</div>
+            </div>
+            <div class="flex-center input-time">
+              <div class="input-time" id="seconds" contenteditable="true"></div>
+            </div>
 					</div>
 
 					<div class="flex-container-arrows">
@@ -49,7 +58,7 @@
 				<div id="return-text"></div>
 			</div>
 		</div>
-	<div id="developer-tag">&copy; 2018 Brandon Culp</div>
+	<div id="developer-tag">&copy; 2020 Brandon Culp</div>
 		<audio>
 			<source src="Timer/beep.mp3" type="audio/mpeg">
 			Your browser does not support the audio element.
